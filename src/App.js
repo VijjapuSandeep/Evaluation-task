@@ -10,7 +10,7 @@ const Search = () => {
   }
   let dataSearch = DATA.filter(item => {
     return Object.keys(item).some(key =>
-      item[key].toString().toLowerCase().includes(filter.toString().toLowerCase()))
+      item[key].toString().includes(filter.toString()))
   });
   const onClickHandler=()=>{
     window.alert('Print Successful');
@@ -23,8 +23,8 @@ const Search = () => {
         <input className="app__submit" type="submit" value="Search" />
       </div>
       <div className="spanElements">
-        <div><span> Search results for -</span></div>
-        <div><span>Count - </span></div>
+        <div><span> Search results for - { filter }</span></div>
+        <div><span>Count - { dataSearch.length}</span></div>
       </div>
       
       <div className="col-md-14">
@@ -38,7 +38,7 @@ const Search = () => {
                     <div className="card-body">
                       <div className="print-container">
                         <h4 className="card-title">{item.label}</h4>
-                        <button type="submit" onClick={onClickHandler}>Print</button>
+                        <button type="submit" onClick={window.print}>Print</button>
                       </div>
                       
                       <p className="card-para">{item.description}</p>
